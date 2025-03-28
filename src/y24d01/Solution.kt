@@ -20,9 +20,14 @@ fun main() {
     }
 
     fun part2(input: List<String>): Long {
-        return input.mapIndexed { index, line ->
-            1L
-        }.sum()
+        val pairList =  input.map { line ->
+            line.trim().split(" ").filter { it.isNotEmpty() }.map { it.toInt() }
+        }
+        val first = pairList.map { it.first() }.sorted()
+        val second = pairList.map { it.last() }.sorted()
+        return first.mapIndexed { index, value ->
+            second.count { value == it } * value
+        }.sum().toLong()
     }
 
     val testInput = readInput("$dir/test_input")
@@ -31,5 +36,5 @@ fun main() {
 //    solution("Part2 test: ", 1L, true) { part2(testInput) }
     val input = readInput("$dir/input")
 //    solution("Part1 solution: ", 1580061L) { part1(input) }
-    solution("Part2 solution: ") { part2(input) }
+    solution("Part2 solution: ", 23046913L) { part2(input) }
 }
