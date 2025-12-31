@@ -11,22 +11,22 @@ fun main() {
         return input.mapIndexed { index, line ->
             val isDecreasing: Boolean? = null
             var isSafe: Boolean? = null
-            line.trim()
-                .split(" ")
-                .filter { it.isNotEmpty() }
-                .map { it.toInt() }
-                .reduce { a, b ->
-                    if (a == b) {
-                        isSafe = false
-                    } else if (a - b > 3) {
-                        isSafe = false
-                    } else if (b - a > 3) {
-                        isSafe = false
-                    } else if () {
-
-                    }
-                    b
-                }
+//            line.trim()
+//                .split(" ")
+//                .filter { it.isNotEmpty() }
+//                .map { it.toInt() }
+//                .reduce { a, b ->
+//                    if (a == b) {
+//                        isSafe = false
+//                    } else if (a - b > 3) {
+//                        isSafe = false
+//                    } else if (b - a > 3) {
+//                        isSafe = false
+//                    } else if () {
+//
+//                    }
+//                    b
+//                }
             1
 
         }.sum().toLong()
