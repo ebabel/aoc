@@ -1,7 +1,5 @@
 package y25d07
 
-import println
-import productOf
 import readInput
 import solution
 
@@ -43,8 +41,7 @@ fun main() {
 
     fun part2(input: List<String>): Long {
 
-        var beams = input.first().map { 0L }.toMutableList()
-        var splits = 0L
+        val beams = input.first().map { 0L }.toMutableList()
 
         input.forEachIndexed { index, inputLine ->
             println("line $index ${beams.size}")
@@ -61,22 +58,10 @@ fun main() {
                     beams[index+1] += temp
                 }
             }
-//            val newBeams = beams.toList()
-//            newBeams.forEach { newBeam ->
-//
-//                if (inputLine[newBeam] == '^') {
-////                    println("removing $newBeam")
-//                    beams.remove(newBeam)
-//                    beams.add(newBeam - 1)
-//                    beams.add(newBeam + 1)
-//                    splits++
-//                }
-//            }
 
         }
 
-        return beams.sum().toLong()
-
+        return beams.sum()
     }
 
     val testInput = readInput("$dir/test_input")
