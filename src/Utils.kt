@@ -1,8 +1,11 @@
 import java.math.BigInteger
 import java.security.MessageDigest
+import kotlin.collections.forEach
 import kotlin.io.path.Path
 import kotlin.io.path.readLines
 import kotlin.math.abs
+import kotlin.math.max
+import kotlin.math.min
 import kotlin.math.pow
 import kotlin.time.measureTimedValue
 
@@ -82,6 +85,21 @@ data class Point(val x: Int = 0, val y: Int = 0) {
     override fun toString(): String = "[$x, $y]"
 }
 
+fun Point.iterateBetween(other: Point, transform: (Int,Int) -> Unit) {
+    val minX = min(x, other.x)
+    val maxX = max(x, other.x)
+    val minY = min(y, other.y)
+    val maxY = max(y, other.y)
+
+    val xRange = minX..maxX
+    val yRange = minY..maxY
+    xRange.forEach { x ->
+        yRange.forEach { y ->
+            transform(x,y)
+        }
+    }
+}
+
 data class PointL(val x: Long = 0, val y: Long = 0) {
     override fun toString(): String = "[$x, $y]"
 }
@@ -105,6 +123,7 @@ fun PointL.dist2(other: PointL): Long {
 }
 
 fun PointL.manhattanDistance(other: PointL) = abs(other.x - x) + abs(other.y - y)
+fun PointL.areaWith(other: PointL) = (abs(other.x - x ) + 1) * (abs(other.y - y ) + 1)
 
 enum class Direction(val dir: Point) {
     SOUTH(Point(0, 1)),

@@ -90,7 +90,7 @@ fun main() {
         }.sum()
     }
 
-    val testInput = readInput("$dir/test_input")
+    val testInput = readInput("2023/day12/test_input")
 
 //    solution("Part1 test: ", 21L, true) { part1(testInput) }
     solution("Part2 test: ", 525152L, true) { part2(testInput) }
